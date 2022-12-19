@@ -1,5 +1,6 @@
-package com.example.journal.evaluateur;
+package com.example.journal.comite;
 
+import com.example.journal.article.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,8 +36,8 @@ public class ComiteController {
     }
 
     @CrossOrigin
-    @PutMapping("comite/{id}")
-    public void noterArticle(@PathVariable(value = "id")String id){
-        comiteService.noterArticle(id);
+    @PutMapping("comite_eval/{id_comite}")
+    public Optional<Article> noterArticle(@PathVariable(value = "id_comite")String id){
+        return comiteService.noterArticle(id);
     }
 }
