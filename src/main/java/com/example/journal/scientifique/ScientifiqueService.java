@@ -6,6 +6,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,6 +31,13 @@ public class ScientifiqueService {
     }
 
     public List<Scientifique> getScientifiqueParType(String type) {
+        /*List<ScientifiqueDTO> ls =new ArrayList<>();
+        for (Scientifique s : {
+            ScientifiqueDTO sd=new ScientifiqueDTO(s);
+            System.out.println(sd);
+            ls.add(sd);
+        }
+        return ls;*/
         return sciRepo.findScientifiqueByType(type);
     }
 

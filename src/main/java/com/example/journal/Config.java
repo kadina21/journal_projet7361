@@ -27,7 +27,8 @@ public class Config {
                     "Chimie",
                     ea,
                     null,
-                    0
+                    0,
+                    null
             );
             Article a2=new Article(
                     null,
@@ -35,7 +36,8 @@ public class Config {
                     "Chimie",
                     ea,
                     null,
-                    0
+                    0,
+                    null
             );
             Article ac5=new Article(
                     null,
@@ -43,7 +45,8 @@ public class Config {
                     "Informatique",
                     ea,
                     null,
-                    0
+                    0,
+                    null
             );
             Article ac1=new Article(
                     null,
@@ -51,7 +54,8 @@ public class Config {
                     "Physique",
                     ea,
                     null,
-                    0
+                    0,
+                    null
             );
             Article ac2=new Article(
                     null,
@@ -59,7 +63,8 @@ public class Config {
                     "Maths",
                     ea,
                     null,
-                    0
+                    0,
+                    null
             );
             Article ac3=new Article(
                     null,
@@ -67,7 +72,8 @@ public class Config {
                     "Biologie",
                     ea,
                     null,
-                    0
+                    0,
+                    null
             );
             Article ac4=new Article(
                     null,
@@ -75,7 +81,8 @@ public class Config {
                     "Médecine",
                     ea,
                     null,
-                    0
+                    0,
+                    null
             );
             artRepo.saveAll(List.of(a1,a2,ac1,ac2,ac3,ac4,ac5));
 

@@ -2,14 +2,16 @@ package com.example.journal.comite;
 
 import com.example.journal.article.Article;
 import com.example.journal.scientifique.Scientifique;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Where;
 
 import java.util.List;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 @Entity
 @Table
 public class Comite {

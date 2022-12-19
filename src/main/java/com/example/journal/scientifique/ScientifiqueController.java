@@ -1,6 +1,7 @@
 package com.example.journal.scientifique;
 
 import com.example.journal.article.Article;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

@@ -3,14 +3,16 @@ package com.example.journal.article;
 import com.example.journal.comite.Comite;
 import com.example.journal.numero.Numero;
 import com.example.journal.scientifique.Scientifique;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Where;
 
 import java.util.List;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 @Entity
 @Table
 public class Article {
@@ -18,38 +20,68 @@ public class Article {
     @GeneratedValue(
             strategy = GenerationType.IDENTITY
     )
-
+    @Column(name="articleId")
     private Long id;
     @Where(clause="type_user='auteur'")
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinTable(name = "articles_scientifiques",
-    joinColumns = @JoinColumn(name = "articleId",referencedColumnName = "titre"),
-    inverseJoinColumns = @JoinColumn(name = "scientifiqueId",referencedColumnName = "username"))
+    joinColumns = @JoinColumn(name = "articleId",referencedColumnName = "articleId"),
+    inverseJoinColumns = @JoinColumn(name = "scientifiqueId",referencedColumnName = "scientifiqueId"))
     //@JsonManagedReference
+    @JsonIgnoreProperties("auteurs")
     private List<Scientifique> articles_scientifiques;
-    @Column(name="titre")
     private String titre;
     private String categorie;
     private String etat;
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "article")
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, mappedBy = "article")
     //@JsonManagedReference
     private Comite comite;
     @ManyToOne
     //@JsonManagedReference
     private Numero numero;
     private int points;
+    private String contenu;
 
 
     public Article() {
     }
 
-    public Article(List<Scientifique> auteurs, String titre, String categorie, EtatArticle etat, Comite comite, int points) {
+    public Article(List<Scientifique> auteurs, String titre, String categorie, EtatArticle etat, Comite comite, int points,String contenu) {
         this.articles_scientifiques = auteurs;
         this.titre = titre;
         this.categorie = categorie;
         this.etat = etat.toString();
         this.comite = comite;
         this.points = points;
+        this.contenu=contenu;
+    }
+
+    public List<Scientifique> getArticles_scientifiques() {
+        return articles_scientifiques;
+    }
+
+    public void setArticles_scientifiques(List<Scientifique> articles_scientifiques) {
+        this.articles_scientifiques = articles_scientifiques;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
+    public Numero getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Numero numero) {
+        this.numero = numero;
+    }
+
+    public String getContenu() {
+        return contenu;
+    }
+
+    public void setContenu(String contenu) {
+        this.contenu = contenu;
     }
 
     public Long getId() {

@@ -2,12 +2,14 @@ package com.example.journal.scientifique;
 
 import com.example.journal.article.Article;
 import com.example.journal.comite.Comite;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 
 import java.util.List;
 
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 @Entity
 @Table
 public class Scientifique {
@@ -20,7 +22,6 @@ public class Scientifique {
     protected String nom;
     protected String prenom;
     protected String email;
-    @Column(name = "username")
     protected String username;
     protected String password;
     protected String typeUser;
@@ -32,6 +33,8 @@ public class Scientifique {
     protected Comite comite;
     @ManyToMany(mappedBy = "articles_scientifiques",fetch = FetchType.LAZY)
     //@JsonManagedReference
+    @JsonIgnoreProperties("articles_scientifiques")
+
     protected List<Article> articles;
 
     public Scientifique(String nom, String prenom, String email, String username, String password, String typeUser, String domaine, String emploi,List<Article> articles) {
