@@ -16,21 +16,21 @@ public class Numero {
     )
     @Column(name = "numeroId")
     private Long id;
-    private Date datePublication;
+    /*private Date datePublication;
     @OneToMany(mappedBy = "numero")
     @JsonBackReference
-    private List<Article> listArticles;
+    private List<Article> listArticles;*/
 
     public Numero(Date datePublication, List<Article> listArticles) {
-        this.datePublication = datePublication;
-        this.listArticles = listArticles;
+        //this.datePublication = datePublication;
+        //this.listArticles = listArticles;
     }
 
     public Numero() {
 
     }
 
-    public Long getId() {
+   /* public Long getId() {
         return id;
     }
 
@@ -52,5 +52,5 @@ public class Numero {
 
     public void setListArticles(List<Article> listArticles) {
         this.listArticles = listArticles;
-    }
+    }*/
 }

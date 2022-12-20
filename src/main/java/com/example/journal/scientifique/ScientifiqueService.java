@@ -123,20 +123,20 @@ public class ScientifiqueService {
         Optional<Scientifique> os = sciRepo.findById(id_sci);
         Optional<Article> oa = artRepo.findById(id_art);
         if(os.isPresent() && oa.isPresent()){
-            List<Article> la=os.get().getArticles();
+            //List<Article> la=os.get().getArticles();
             Article a = oa.get();
             Scientifique s=os.get();
             if(s.isLoggedIn()){
-                if(la.contains(a)){
+                //if(la.contains(a)){
                     return a.getEtat();
-                }
+                //}
             }else{
                 return "Veuillez vous connecter";
             }
         }else{
             throw new IllegalStateException("Scientifique ou article introuvable");
         }
-        return null;
+        //return null;
     }
 }
 

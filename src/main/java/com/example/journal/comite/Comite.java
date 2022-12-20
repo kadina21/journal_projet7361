@@ -9,9 +9,9 @@ import org.hibernate.annotations.Where;
 import java.util.List;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
-@JsonIdentityInfo(
+/*@JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+        property = "id")*/
 @Entity
 @Table
 public class Comite {
@@ -22,21 +22,23 @@ public class Comite {
     //@GeneratedValue(generator = "uuid")
     //@GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
-    @OneToOne(fetch = FetchType.LAZY)
+    /*@OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "articleId")
     //@JsonBackReference
-    private Article article;
-    @Where(clause="type_user='evaluateur'")
-    @OneToMany(mappedBy = "comite")
+    private Article article;*/
+    private Long article;
+    //@Where(clause="type_user='evaluateur'")
+    //@OneToMany(mappedBy = "comite")
     //@JsonBackReference
-    private List<Scientifique> listEval;
+    //private List<Scientifique> listEval;
+    private String listEval;
 
 
     public Comite() {
 
     }
 
-    public Comite(String id,Article article, List<Scientifique> listEval) {
+    public Comite(String id,Long article, String listEval) {
         this.id=id;
         this.article = article;
         this.listEval = listEval;
@@ -50,19 +52,19 @@ public class Comite {
         this.id = id;
     }
 
-    public Article getArticle() {
+    public Long getArticle() {
         return article;
     }
 
-    public void setArticle(Article article) {
+    public void setArticle(Long article) {
         this.article = article;
     }
 
-    public List<Scientifique> getListEval() {
+    public String getListEval() {
         return listEval;
     }
 
-    public void setListEval(List<Scientifique> listEval) {
+    public void setListEval(String listEval) {
         this.listEval = listEval;
     }
 }

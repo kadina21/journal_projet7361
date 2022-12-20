@@ -37,7 +37,7 @@ public class ComiteService {
        Optional<Article> oa =  artRepo.findById(id);
        if(oa.isPresent()){
            Article a=oa.get();
-           return a.getComite();
+           return null;//a.getComite();
        }else{
            throw new IllegalStateException("Article introuvable");
        }
@@ -48,7 +48,7 @@ public class ComiteService {
         if(oc.isPresent()){
             Random r=new Random();
             Comite c=oc.get();
-            Article a=c.getArticle();
+            /*Article a=c.getArticle();
             for(Scientifique s :c.getListEval()){
                 int pointsDonnes = r.nextInt(4);
                 a.setPoints(a.getPoints()+pointsDonnes);
@@ -59,7 +59,7 @@ public class ComiteService {
                 return articleService.getArticleById(a.getId());
             }else{
                 a.setPoints(0);
-            }
+            }*/
         }else{
             throw new IllegalStateException("Comite introuvable");
         }

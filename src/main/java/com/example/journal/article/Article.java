@@ -10,9 +10,9 @@ import org.hibernate.annotations.Where;
 import java.util.List;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
-@JsonIdentityInfo(
+/*@JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+        property = "id")*/
 @Entity
 @Table
 public class Article {
@@ -22,23 +22,24 @@ public class Article {
     )
     @Column(name="articleId")
     private Long id;
-    @Where(clause="type_user='auteur'")
+    /*@Where(clause="type_user='auteur'")
     @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinTable(name = "articles_scientifiques",
     joinColumns = @JoinColumn(name = "articleId",referencedColumnName = "articleId"),
     inverseJoinColumns = @JoinColumn(name = "scientifiqueId",referencedColumnName = "scientifiqueId"))
     //@JsonManagedReference
     @JsonIgnoreProperties("auteurs")
-    private List<Scientifique> articles_scientifiques;
+    private List<Scientifique> articles_scientifiques;*/
+    private String articles_scientifiques;
     private String titre;
     private String categorie;
     private String etat;
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, mappedBy = "article")
+   // @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, mappedBy = "article")
     //@JsonManagedReference
-    private Comite comite;
-    @ManyToOne
+    private String comite;
+    //@ManyToOne
     //@JsonManagedReference
-    private Numero numero;
+    //private Numero numero;
     private int points;
     private String contenu;
 
@@ -46,7 +47,7 @@ public class Article {
     public Article() {
     }
 
-    public Article(List<Scientifique> auteurs, String titre, String categorie, EtatArticle etat, Comite comite, int points,String contenu) {
+    public Article(String auteurs, String titre, String categorie, EtatArticle etat, String comite, int points,String contenu) {
         this.articles_scientifiques = auteurs;
         this.titre = titre;
         this.categorie = categorie;
@@ -56,11 +57,11 @@ public class Article {
         this.contenu=contenu;
     }
 
-    public List<Scientifique> getArticles_scientifiques() {
+    public String getArticles_scientifiques() {
         return articles_scientifiques;
     }
 
-    public void setArticles_scientifiques(List<Scientifique> articles_scientifiques) {
+    public void setArticles_scientifiques(String articles_scientifiques) {
         this.articles_scientifiques = articles_scientifiques;
     }
 
@@ -68,13 +69,13 @@ public class Article {
         this.etat = etat;
     }
 
-    public Numero getNumero() {
+    /*public Numero getNumero() {
         return numero;
     }
 
     public void setNumero(Numero numero) {
         this.numero = numero;
-    }
+    }*/
 
     public String getContenu() {
         return contenu;
@@ -93,17 +94,17 @@ public class Article {
     }
 
 
-    public List<Scientifique> getAuteurs() {
+    public String getAuteurs() {
         return articles_scientifiques;
     }
 
-    public void setAuteurs(List<Scientifique> auteurs) {
+    public void setAuteurs(String auteurs) {
         this.articles_scientifiques=auteurs;
     }
     public void updateAuteurs(List<Scientifique> auteurs){
         int i=1;
         for(Scientifique s : auteurs){
-            this.articles_scientifiques.set(i,s);
+            //this.articles_scientifiques.set(i,s);
             i++;
         }
     }
@@ -132,11 +133,11 @@ public class Article {
         this.etat = etat.toString();
     }
 
-    public Comite getComite() {
+    public String getComite() {
         return comite;
     }
 
-    public void setComite(Comite comite) {
+    public void setComite(String comite) {
         this.comite = comite;
     }
 

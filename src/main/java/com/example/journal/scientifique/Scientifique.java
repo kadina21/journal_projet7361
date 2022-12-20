@@ -7,9 +7,9 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-@JsonIdentityInfo(
+/*@JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+        property = "id")*/
 @Entity
 @Table
 public class Scientifique {
@@ -28,16 +28,18 @@ public class Scientifique {
     protected String domaine;
     protected String emploi;
     protected boolean loggedIn;
-    @ManyToOne
+    //@ManyToOne
     //@JsonManagedReference
-    protected Comite comite;
-    @ManyToMany(mappedBy = "articles_scientifiques",fetch = FetchType.LAZY)
+    //protected Comite comite;
+    protected String comite;
+    /*@ManyToMany(mappedBy = "articles_scientifiques",fetch = FetchType.LAZY)
     //@JsonManagedReference
     @JsonIgnoreProperties("articles_scientifiques")
 
-    protected List<Article> articles;
+    protected List<Article> articles;*/
+    protected String articles;
 
-    public Scientifique(String nom, String prenom, String email, String username, String password, String typeUser, String domaine, String emploi,List<Article> articles) {
+    public Scientifique(String nom, String prenom, String email, String username, String password, String typeUser, String domaine, String emploi,String articles) {
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
@@ -133,19 +135,19 @@ public class Scientifique {
         this.loggedIn = loggedIn;
     }
 
-    public Comite getComite() {
+    public String getComite() {
         return comite;
     }
 
-    public void setComite(Comite comite) {
+    public void setComite(String comite) {
         this.comite = comite;
     }
 
-    public List<Article> getArticles() {
+    public String getArticles() {
         return articles;
     }
 
-    public void setArticles(List<Article> articles) {
+    public void setArticles(String articles) {
         this.articles = articles;
     }
 

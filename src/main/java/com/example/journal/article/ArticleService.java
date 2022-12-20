@@ -49,7 +49,7 @@ public class ArticleService {
     }
 
     public void addNewArticle(Article a) {
-        if(a.getAuteurs().get(0).isLoggedIn()){
+        /*if(a.getAuteurs().get(0).isLoggedIn()){
             Optional<Comite> oc = comRepo.findComiteByCategorie(a.getCategorie());
             if(oc.isPresent()){
                 a.setComite(oc.get());
@@ -58,7 +58,7 @@ public class ArticleService {
             artRepo.save(a);
         }else{
             System.out.println("Veuillez vous connecter");
-        }
+        }*/
 
     }
 
@@ -80,7 +80,7 @@ public class ArticleService {
             a.setCategorie(categorie);
         }
         if(auteurs!=null && auteurs.size()>0 && !Objects.equals(a.getAuteurs(),auteurs)){
-            a.setAuteurs(auteurs);
+            a.setAuteurs(auteurs.toString());
         }
     }
 

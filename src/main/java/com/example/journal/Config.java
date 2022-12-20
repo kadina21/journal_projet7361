@@ -107,7 +107,7 @@ public class Config {
                     "auteur",
                     "Chimie",
                     "Chercheur",
-                    List.of(a2)
+                    a2.getId().toString()
             );
 
             Scientifique s3=new Scientifique(
@@ -119,7 +119,7 @@ public class Config {
                     "auteur",
                     "Chimie",
                     "Chercheur",
-                    List.of(a1,a2)
+                    a1.getId().toString()+a2.getId().toString()
             );
             Scientifique s4=new Scientifique(
                     "Peralta",
@@ -130,7 +130,7 @@ public class Config {
                     "auteur",
                     "Chimie",
                     "Professeur",
-                    List.of(a1)
+                    a1.getId().toString()
             );
 
             //Evaluateurs
@@ -362,72 +362,72 @@ public class Config {
 
             Comite c1=new Comite(
                     "Chimie",
-                    a1,
-                    List.of(e1,e2,e3)
+                    a1.getId(),
+                    "5,6,7"
             );
 
             Comite c2=new Comite(
                     "Physique",
-                    ac1,
-                    List.of(e4,e5,e6)
+                    ac1.getId(),
+                    "8,9,10"
             );
 
             Comite c3=new Comite(
                     "Informatique",
-                    ac2,
-                    List.of(e7,e8,e9)
+                    ac2.getId(),
+                    "11,12,13"
             );
 
             Comite c4=new Comite(
                     "Maths",
-                    ac3,
-                    List.of(e10,e11,e12)
+                    ac3.getId(),
+                    "14,15,16"
             );
 
             Comite c5=new Comite(
                     "Biologie",
-                    ac4,
-                    List.of(e13,e14,e15)
+                    ac4.getId(),
+                    "17,18,19"
             );
 
             Comite c6=new Comite(
                     "Médecine",
-                    ac5,
-                    List.of(e16,e17,e18)
+                    ac5.getId(),
+                    "20,21,22"
             );
 
 
-            a1.setAuteurs(List.of(s3,s4));
-            a2.setAuteurs(List.of(s2,s3));
-            a1.setComite(c1);
-            ac1.setComite(c2);
-            ac2.setComite(c3);
-            ac3.setComite(c4);
-            ac4.setComite(c5);
-            ac5.setComite(c6);
-            e1.setComite(c1);
-            e2.setComite(c1);
-            e3.setComite(c1);
+            a1.setAuteurs("3,4");
+            a2.setAuteurs("2,3");
+            a1.setComite(c1.getId());
+            ac1.setComite(c2.getId());
+            ac2.setComite(c3.getId());
+            ac3.setComite(c4.getId());
+            ac4.setComite(c5.getId());
+            ac5.setComite(c6.getId());
+            e1.setComite(c1.getId());
+            e2.setComite(c1.getId());
+            e3.setComite(c1.getId());
 
-            e4.setComite(c2);
-            e5.setComite(c2);
-            e6.setComite(c2);
+            e4.setComite(c2.getId());
+            e5.setComite(c2.getId());
+            e6.setComite(c2.getId());
 
-            e7.setComite(c3);
-            e8.setComite(c3);
-            e9.setComite(c3);
+            e7.setComite(c3.getId());
+            e8.setComite(c3.getId());
+            e9.setComite(c3.getId());
 
-            e10.setComite(c4);
-            e11.setComite(c4);
-            e12.setComite(c4);
+            e10.setComite(c4.getId());
+            e11.setComite(c4.getId());
+            e12.setComite(c4.getId());
 
-            e13.setComite(c5);
-            e14.setComite(c5);
-            e15.setComite(c5);
+            e13.setComite(c5.getId());
+            e14.setComite(c5.getId());
+            e15.setComite(c5.getId());
 
-            e16.setComite(c6);
-            e17.setComite(c6);
-            e18.setComite(c6);
+            e16.setComite(c6.getId());
+            e17.setComite(c6.getId());
+            e18.setComite(c6.getId());
 
             comRepo.saveAll(List.of(c1,c2,c3,c4,c5,c6));
             sciRepo.saveAll(
