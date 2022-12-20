@@ -1,5 +1,6 @@
 package com.example.journal.mail;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,8 +12,8 @@ public class MailController {
     private MailServiceClass ms;
 
     @PostMapping("/envoyerMail")
-    public String envoyerMail(@RequestBody DetailsMail infos){
-        String statut=ms.envoyerMail(infos);
+    public String envoyerMail(@RequestBody HttpServletRequest request){
+        String statut=ms.envoyerMail(request);
         return statut;
     }
 }

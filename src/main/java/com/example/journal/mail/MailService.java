@@ -1,5 +1,7 @@
 package com.example.journal.mail;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 public interface MailService {
-    public String envoyerMail(DetailsMail infos);
+    public String envoyerMail(HttpServletRequest request);
 }
