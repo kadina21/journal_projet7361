@@ -28,7 +28,7 @@ public class Config {
                     ea,
                     null,
                     0,
-                    null
+                    "Ceci est un article sur les molécules"
             );
             Article a2=new Article(
                     null,
@@ -37,7 +37,7 @@ public class Config {
                     ea,
                     null,
                     0,
-                    null
+                    "Ceci est un article sur les électrons et neutrons"
             );
             Article ac5=new Article(
                     null,
@@ -46,7 +46,7 @@ public class Config {
                     ea,
                     null,
                     0,
-                    null
+                    "Ceci est un article sur Spring Boot"
             );
             Article ac1=new Article(
                     null,
@@ -55,7 +55,7 @@ public class Config {
                     ea,
                     null,
                     0,
-                    null
+                    "Ceci est un article sur la thermodynamique"
             );
             Article ac2=new Article(
                     null,
@@ -64,7 +64,7 @@ public class Config {
                     ea,
                     null,
                     0,
-                    null
+                    "Ceci est un article sur les intégrales"
             );
             Article ac3=new Article(
                     null,
@@ -73,7 +73,7 @@ public class Config {
                     ea,
                     null,
                     0,
-                    null
+                    "Ceci est un article sur la respiration"
             );
             Article ac4=new Article(
                     null,
@@ -82,7 +82,7 @@ public class Config {
                     ea,
                     null,
                     0,
-                    null
+                    "Ceci est un article sur la COVID"
             );
             artRepo.saveAll(List.of(a1,a2,ac1,ac2,ac3,ac4,ac5));
 
